@@ -17,4 +17,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#app {
+  background-color: rgba(7, 7, 7, 0.185);
+}
+</style>
