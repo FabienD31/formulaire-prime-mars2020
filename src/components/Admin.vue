@@ -7,6 +7,7 @@
 
 <script>
 import TheHeader from "./TheHeader";
+
 export default {
   components: TheHeader,
 };
