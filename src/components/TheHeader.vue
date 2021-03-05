@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar relative="top" type="dark" variant="dark">
-      <b-navbar-brand href="/formulaire">Formulaire</b-navbar-brand>
+      <b-navbar-brand href="/">Formulaire</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item href="/admin">Admin</b-nav-item>
