@@ -20,8 +20,8 @@ const router = new VueRouter({
   mode:'history',
   routes: [
     // dynamic segments start with a colon
-    { path: '/admin', component: Admin },
-    { path: '/formulaire', component: Formulaire }
+    { path: '/', component: Formulaire },
+    { path: '/admin', component: Admin }
   ]
 })
 
