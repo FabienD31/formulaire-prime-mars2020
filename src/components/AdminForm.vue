@@ -103,7 +103,9 @@ export default {
             .updateProfile({
               displayName: this.form.name,
             })
-            .then(() => {});
+            .then(() => {
+              console.log("tu es co");
+            });
         })
         .catch((err) => {
           this.error = err.message;
