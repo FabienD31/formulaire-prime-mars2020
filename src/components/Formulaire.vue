@@ -1,10 +1,9 @@
 <template>
   <div>
-    <TheHeader />
     <h3 class="mt-5 text-center mb-5">
       Formulaire digitalisation
     </h3>
-    <form @submit="submitForm" class="">
+    <b-form @submit="submitForm" class="">
       <div class="question py-3 px-3">
         <h6><strong>Question 1 : </strong></h6>
         <p>
@@ -15,7 +14,7 @@
         <!-- checkbox 1-->
         <b-form-checkbox
           id="checkbox1"
-          v-model="question1[0]"
+          v-model="totalForm.question1[0]"
           name="checkbox1"
           value="true"
           unchecked-value="false"
@@ -25,7 +24,7 @@
         <!-- checkbox 2-->
         <b-form-checkbox
           id="checkbox2"
-          v-model="question1[1]"
+          v-model="totalForm.question1[1]"
           name="checkbox2"
           value="true"
           unchecked-value="false"
@@ -35,7 +34,7 @@
         <!-- checkbox 3-->
         <b-form-checkbox
           id="checkbox-3"
-          v-model="question1[2]"
+          v-model="totalForm.question1[2]"
           name="checkbox-3"
           value="true"
           unchecked-value="false"
@@ -45,7 +44,7 @@
         <!-- checkbox 4-->
         <b-form-checkbox
           id="checkbox-4"
-          v-model="question1[3]"
+          v-model="totalForm.question1[3]"
           name="checkbox-4"
           value="true"
           unchecked-value="false"
@@ -55,7 +54,7 @@
         <!-- checkbox 5-->
         <b-form-checkbox
           id="checkbox-5"
-          v-model="question1[4]"
+          v-model="totalForm.question1[4]"
           name="checkbox-5"
           value="true"
           unchecked-value="false"
@@ -65,7 +64,7 @@
         <!-- checkbox 6-->
         <b-form-checkbox
           id="checkbox-6"
-          v-model="question1[5]"
+          v-model="totalForm.question1[5]"
           name="checkbox-6"
           value="true"
           unchecked-value="false"
@@ -75,7 +74,7 @@
         <!-- checkbox 7-->
         <b-form-checkbox
           id="checkbox-7"
-          v-model="question1[6]"
+          v-model="totalForm.question1[6]"
           name="checkbox-7"
           value="true"
           unchecked-value="false"
@@ -85,7 +84,7 @@
         <!-- checkbox 8-->
         <b-form-checkbox
           id="checkbox-8"
-          v-model="question1[7]"
+          v-model="totalForm.question1[7]"
           name="checkbox-8"
           value="true"
           unchecked-value="false"
@@ -95,7 +94,7 @@
         <!-- checkbox 9-->
         <b-form-checkbox
           id="checkbox-9"
-          v-model="question1[8]"
+          v-model="totalForm.question1[8]"
           name="checkbox-9"
           value="true"
           unchecked-value="false"
@@ -106,7 +105,7 @@
         <!-- checkbox 10-->
         <b-form-checkbox
           id="checkbox-10"
-          v-model="question1[9]"
+          v-model="totalForm.question1[9]"
           name="checkbox-10"
           value="true"
           unchecked-value="false"
@@ -116,7 +115,7 @@
         <!-- checkbox 11-->
         <b-form-checkbox
           id="checkbox-11"
-          v-model="question1[10]"
+          v-model="totalForm.question1[10]"
           name="checkbox-11"
           value="true"
           unchecked-value="false"
@@ -127,7 +126,7 @@
 
         <!--pour le test-->
         <div>
-          State: <strong>{{ question1 }}</strong>
+          State: <strong>{{ totalForm.question1 }}</strong>
         </div>
       </div>
 
@@ -139,12 +138,16 @@
             <strong>Question 2 : </strong>Votre entreprise est immatriculée en
             France ?
           </p>
-          <b-form-radio v-model="question2" value="true">Oui</b-form-radio>
-          <b-form-radio v-model="question2" value="false">Non</b-form-radio>
+          <b-form-radio v-model="totalForm.question2" value="true"
+            >Oui</b-form-radio
+          >
+          <b-form-radio v-model="totalForm.question2" value="false"
+            >Non</b-form-radio
+          >
         </b-form-group>
 
         <div class="mt-3">
-          Selected: <strong>{{ question2 }}</strong>
+          Selected: <strong>{{ totalForm.question2 }}</strong>
         </div>
       </div>
 
@@ -156,12 +159,16 @@
             <strong>Question 3 : </strong>Vous réalisez un chiffre d'affaires
             annuel inférieur à 2 millions d'euros HT ?
           </p>
-          <b-form-radio v-model="question3" value="true">Oui</b-form-radio>
-          <b-form-radio v-model="question3" value="false">Non</b-form-radio>
+          <b-form-radio v-model="totalForm.question3" value="true"
+            >Oui</b-form-radio
+          >
+          <b-form-radio v-model="totalForm.question3" value="false"
+            >Non</b-form-radio
+          >
         </b-form-group>
 
         <div class="mt-3">
-          Selected: <strong>{{ question3 }}</strong>
+          Selected: <strong>{{ totalForm.question3 }}</strong>
         </div>
       </div>
 
@@ -170,12 +177,16 @@
       <div class="question py-3 px-3 my-4">
         <b-form-group>
           <p><strong>Question 4 : </strong>Vous avez moins de 11 salariés ?</p>
-          <b-form-radio v-model="question4" value="true">Oui</b-form-radio>
-          <b-form-radio v-model="question4" value="false">Non</b-form-radio>
+          <b-form-radio v-model="totalForm.question4" value="true"
+            >Oui</b-form-radio
+          >
+          <b-form-radio v-model="totalForm.question4" value="false"
+            >Non</b-form-radio
+          >
         </b-form-group>
 
         <div class="mt-3">
-          Selected: <strong>{{ question4 }}</strong>
+          Selected: <strong>{{ totalForm.question4 }}</strong>
         </div>
       </div>
 
@@ -187,12 +198,16 @@
             <strong>Question 5 : </strong>Vous avez subi une interdiction
             d'accueil du public lors du confinement de novembre 2020 ?
           </p>
-          <b-form-radio v-model="question5" value="true">Oui</b-form-radio>
-          <b-form-radio v-model="question5" value="false">Non</b-form-radio>
+          <b-form-radio v-model="totalForm.question5" value="true"
+            >Oui</b-form-radio
+          >
+          <b-form-radio v-model="totalForm.question5" value="false"
+            >Non</b-form-radio
+          >
         </b-form-group>
 
         <div class="mt-3">
-          Selected: <strong>{{ question5 }}</strong>
+          Selected: <strong>{{ totalForm.question5 }}</strong>
         </div>
       </div>
 
@@ -202,12 +217,12 @@
           <strong>Question 6 : </strong>Pour vous envoyer les résultats du test
           nous avons besoin :
         </p>
-        <form class="mx-5">
+        <b-form class="mx-5">
           <b-form-input
             placeholder="Nom"
             class="my-2"
             type="text"
-            v-model="form.name"
+            v-model="totalForm.form.name"
             required
           >
           </b-form-input>
@@ -215,17 +230,17 @@
             placeholder="Email"
             class="my-2"
             type="email"
-            v-model="form.email"
+            v-model="totalForm.form.email"
             required
           ></b-form-input>
           <b-form-input
-            v-model="form.phone"
+            v-model="totalForm.form.phone"
             placeholder="Téléphone"
             class="my-2"
-            type="mobile"
+            type="tel"
             required
           ></b-form-input>
-        </form>
+        </b-form>
       </div>
       <div
         v-if="errors.length"
@@ -242,68 +257,82 @@
           >Valider</b-button
         >
       </div>
-    </form>
+      <b-card class="mt-3" header="Form Data Result">
+        <pre class="m-0">{{ totalForm }}</pre>
+      </b-card>
+    </b-form>
   </div>
 </template>
 
 <script>
-import TheHeader from "./TheHeader";
+import axios from "axios";
 export default {
-  components: TheHeader,
   data() {
     return {
-      question1: [
-        (this.checkbox1 = false),
-        (this.checkbox2 = false),
-        (this.checkbox3 = false),
-        (this.checkbox4 = false),
-        (this.checkbox5 = false),
-        (this.checkbox6 = false),
-        (this.checkbox7 = false),
-        (this.checkbox8 = false),
-        (this.checkbox9 = false),
-        (this.checkbox10 = false),
-        (this.checkbox11 = false),
-      ],
-      question2: true,
-      question3: true,
-      question4: true,
-      question5: true,
-      form: {
-        phone: "",
-        name: "",
-        email: "",
+      totalForm: {
+        question1: [
+          (this.checkbox1 = false),
+          (this.checkbox2 = false),
+          (this.checkbox3 = false),
+          (this.checkbox4 = false),
+          (this.checkbox5 = false),
+          (this.checkbox6 = false),
+          (this.checkbox7 = false),
+          (this.checkbox8 = false),
+          (this.checkbox9 = false),
+          (this.checkbox10 = false),
+          (this.checkbox11 = false),
+        ],
+        question2: true,
+        question3: true,
+        question4: true,
+        question5: true,
+        form: {
+          name: "",
+          email: "",
+          phone: "",
+        },
       },
       errors: [],
     };
   },
   methods: {
-    submitForm(event) {
-      event.preventDefault();
-      this.verifyForm()
-        .then(() => {
-          //emplacement de l'envoi au back (par exemple la bdd)
-          console.log({ ...this.form }); //"..." form es6 pour ne pas récuperer les getteur et setteur
-        })
-        .catch(() => {
-          console.log("error");
-        });
-    },
+    // submitForm(event) {
+    //   event.preventDefault();
+    //   this.verifyForm()
+    //     .then(() => {
+    //       //emplacement de l'envoi au back (par exemple la bdd)
+    //       console.log({ ...this.form }); //"..." form es6 pour ne pas récuperer les getteur et setteur
+    //     })
+    //     .catch(() => {
+    //       console.log("error");
+    //     });
+    // },
     verifyForm() {
       this.errors = [];
-      if (!this.form.name) {
+      if (!this.totalForm.form.name) {
         this.errors.push("Nom manquant ! ");
-        this.form.name === false;
       }
-      if (!this.form.email) {
+      if (!this.totalForm.form.email) {
         this.errors.push("Email manquant ! ");
       }
-      if (!this.form.phone) {
+      if (!this.totalForm.email.includes("@")) {
+        this.errors.push("Email non conforme ! ");
+      }
+      if (!this.totalForm.form.phone) {
         this.errors.push("Téléphone manquant ! ");
       }
-      return new Promise((resolve, reject) => {
-        this.errors.length ? reject("ko") : resolve("ok");
-      });
+    },
+    submitForm(e) {
+      e.preventDefault();
+      this.verifyForm();
+      axios
+        .post(
+          "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json",
+          this.totalForm
+        )
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
     },
   },
 };
