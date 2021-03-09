@@ -7,10 +7,12 @@
           <b-nav-item href="/admin">Admin</b-nav-item>
           <b-nav-item href="/adminForm">Connectez-vous</b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav>
-          <b-nav-item href="/adminForm" @click="signOut"
-            >Déconnection</b-nav-item
-          >
+        <b-navbar-nav class="ml-auto h1 off">
+          <b-icon-power
+            href="/adminForm"
+            @click="signOut"
+            variant="info"
+          ></b-icon-power>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -31,7 +33,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          console.log("tu es deco");
+          alert("Tu es deconnecté");
         })
         .catch((er) => {
           this.error = er.message;
@@ -41,4 +43,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.off :hover {
+  cursor: pointer;
+}
+</style>

@@ -8,25 +8,6 @@
             <div v-if="error" class="alert alert-danger">{{ error }}</div>
             <form action="#" @submit.prevent="submit">
               <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right"
-                  >Nom</label
-                >
-
-                <div class="col-md-6">
-                  <input
-                    id="name"
-                    type="name"
-                    class="form-control"
-                    name="name"
-                    value
-                    required
-                    autofocus
-                    v-model="form.name"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label text-md-right"
                   >Email</label
                 >
@@ -86,7 +67,6 @@ export default {
   data() {
     return {
       form: {
-        name: "",
         email: "",
         password: "",
       },
@@ -99,11 +79,10 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then((data) => {
-          data.user
-            .updateProfile({
-              displayName: this.form.name,
-            })
-            .then(() => {});
+          data.user;
+        })
+        .then(() => {
+          alert("L'inscription a réussie");
         })
         .catch((err) => {
           this.error = err.message;
