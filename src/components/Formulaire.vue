@@ -312,14 +312,11 @@ export default {
       this.errors = [];
       if (!this.totalForm.form.name) {
         this.errors.push("Nom manquant ! ");
-      }
-      if (!this.totalForm.form.email) {
+      } else if (!this.totalForm.form.email) {
         this.errors.push("Email manquant ! ");
-      }
-      if (!this.totalForm.email.includes("@")) {
+      } else if (!this.totalForm.email.includes("@")) {
         this.errors.push("Email non conforme ! ");
-      }
-      if (!this.totalForm.form.phone) {
+      } else if (!this.totalForm.form.phone) {
         this.errors.push("Téléphone manquant ! ");
       }
     },

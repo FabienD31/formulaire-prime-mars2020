@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">S'inscrire</div>
+          <div class="card-header">Se connecter</div>
           <div class="card-body">
             <div v-if="error" class="alert alert-danger">{{ error }}</div>
             <form action="#" @submit.prevent="submit">
@@ -67,7 +67,7 @@
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
                   <button type="submit" class="btn btn-primary">
-                    S'inscrire
+                    Connexion
                   </button>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default {
     submit() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.form.email, this.form.password)
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then((data) => {
           data.user
             .updateProfile({
