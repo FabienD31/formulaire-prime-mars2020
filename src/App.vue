@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <div>
-      Logged in
-      <div v-if="log">Yes</div>
-      <div v-else>No</div>
-    </div>
     <TheHeader />
     <div class="container">
       <router-view></router-view>

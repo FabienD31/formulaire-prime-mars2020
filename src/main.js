@@ -4,7 +4,8 @@ import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -61,7 +62,22 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+
+let app;
+
+firebase.auth().onAuthStateChanged(user => {
+  console.log("user", user);
+  if (!app) {
+    app = new Vue({
+      router,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+});
+
+
+
+// new Vue({
+//   render: h => h(App),
+//   router
+// }).$mount('#app')
