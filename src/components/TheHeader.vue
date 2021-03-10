@@ -8,7 +8,7 @@
           <b-nav-item href="/admin">Admin</b-nav-item>
           <b-nav-item href="/adminForm">Connectez-vous</b-nav-item>
         </b-navbar-nav>
-        <b-navbar-nav class="ml-auto h1 off">
+        <b-navbar-nav v-if="loggedIn" class="ml-auto h1 off">
           <b-icon-power href="/" @click="signOut" variant="info"></b-icon-power>
         </b-navbar-nav>
       </b-collapse>
@@ -22,19 +22,34 @@ export default {
   data() {
     return {
       error: false,
+      loggedIn: false,
     };
   },
+  mounted() {
+    this.setupFirebase();
+  },
   methods: {
-    signOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          alert("Tu es deconnecté");
-        })
-        .catch((er) => {
-          this.error = er.message;
-        });
+    setupFirebase() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.loggedIn = true;
+        } else {
+          this.loggedIn = false;
+        }
+      });
+    },
+    async signOut() {
+      try {
+        const off = await firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            this.$router.replace({ path: "/" });
+          });
+        console.log(off);
+      } catch (er) {
+        this.error = er.message;
+      }
     },
   },
 };

@@ -74,19 +74,18 @@ export default {
     };
   },
   methods: {
-    submit() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.form.email, this.form.password)
-        .then((data) => {
+    async submit() {
+      try {
+        const signIn = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.form.email, this.form.password);
+        console.log(signIn);
+        this.$router.replace({ path: "/DataForm" }).then((data) => {
           data.user;
-        })
-        .then(() => {
-          alert("L'inscription a réussie");
-        })
-        .catch((err) => {
-          this.error = err.message;
         });
+      } catch (err) {
+        this.error = err.message;
+      }
     },
   },
 };

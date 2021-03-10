@@ -46,10 +46,20 @@ const router = new VueRouter({
     { path: '/', component: Formulaire },
     { path: '/admin', component: Admin },
     { path: '/adminForm', component: AdminForm },
-    { path: '/DataForm', component: DataForm },
+    { path: '/DataForm', component: DataForm, meta: { requiresAuth: true }},
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);//??
+  const isAuthenticated = firebase.auth().currentUser;
+  console.log("isauthenticated", isAuthenticated);
+  if (requiresAuth && !isAuthenticated) {
+    next("/AdminForm");
+  } else {
+    next();
+  }
+});
 
 new Vue({
   render: h => h(App),

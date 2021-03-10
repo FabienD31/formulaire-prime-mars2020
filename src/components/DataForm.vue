@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 import axios from "axios";
 export default {
   data() {
@@ -47,12 +48,28 @@ export default {
     };
   },
   mounted() {
+    this.getSecrets();
     axios
       .get(
         "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json"
       )
       .then((response) => (this.forms = response.data))
       .catch((error) => console.log(error));
+  },
+  methods: {
+    async getSecrets() {
+      const token = await firebase.auth().currentUser.getIdToken();
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      this.secrets = await this.$axios.get(
+        "http://localhost:8080/DataForm",
+        config
+      );
+      this.secrets = this.secrets.data;
+    },
   },
 };
 </script>
