@@ -14,6 +14,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Admin from "./components/Admin"
 import Formulaire from "./components/Formulaire"
 import AdminForm from "./components/AdminForm"
+import DataForm from "./components/DataForm"
 
 
 
@@ -42,10 +43,10 @@ firebase.analytics();
 const router = new VueRouter({
   mode:'history',
   routes: [
-    // dynamic segments start with a colon
     { path: '/', component: Formulaire },
     { path: '/admin', component: Admin },
     { path: '/adminForm', component: AdminForm },
+    { path: '/DataForm', component: DataForm },
   ]
 })
 

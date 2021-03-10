@@ -222,7 +222,7 @@
             placeholder="Nom"
             class="my-2"
             type="text"
-            v-model="totalForm.form.name"
+            v-model="totalForm.user.name"
             required
           >
           </b-form-input>
@@ -230,11 +230,11 @@
             placeholder="Email"
             class="my-2"
             type="email"
-            v-model="totalForm.form.email"
+            v-model="totalForm.user.email"
             required
           ></b-form-input>
           <b-form-input
-            v-model="totalForm.form.phone"
+            v-model="totalForm.user.phone"
             placeholder="Téléphone"
             class="my-2"
             type="tel"
@@ -287,7 +287,7 @@ export default {
         question3: true,
         question4: true,
         question5: true,
-        form: {
+        user: {
           name: "",
           email: "",
           phone: "",
@@ -297,26 +297,13 @@ export default {
     };
   },
   methods: {
-    // submitForm(event) {
-    //   event.preventDefault();
-    //   this.verifyForm()
-    //     .then(() => {
-    //       //emplacement de l'envoi au back (par exemple la bdd)
-    //       console.log({ ...this.form }); //"..." form es6 pour ne pas récuperer les getteur et setteur
-    //     })
-    //     .catch(() => {
-    //       console.log("error");
-    //     });
-    // },
     verifyForm() {
       this.errors = [];
-      if (!this.totalForm.form.name) {
+      if (!this.totalForm.user.name) {
         this.errors.push("Nom manquant ! ");
-      } else if (!this.totalForm.form.email) {
+      } else if (!this.totalForm.user.email) {
         this.errors.push("Email manquant ! ");
-      } else if (!this.totalForm.email.includes("@")) {
-        this.errors.push("Email non conforme ! ");
-      } else if (!this.totalForm.form.phone) {
+      } else if (!this.totalForm.user.phone) {
         this.errors.push("Téléphone manquant ! ");
       }
     },
