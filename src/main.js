@@ -4,9 +4,8 @@ import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import firebase from "firebase/app";
+import firebase from "firebase";
 import "firebase/auth";
-
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -45,39 +44,21 @@ const router = new VueRouter({
   mode:'history',
   routes: [
     { path: '/', component: Formulaire },
-    { path: '/admin',component: Admin },
+    { path: '/admin999',component: Admin },
     { path: '/adminForm', component: AdminForm },
-    { path: '/DataForm', component: DataForm, meta: { requiresAuth: true }},
+    { path: '/DataForm', component: DataForm, beforeEnter: (to, from, next) => {
+      const isAuthenticated = firebase.auth().currentUser;
+      if (isAuthenticated) {
+        next()
+      } else {
+        next("/AdminForm")
+      }
+    }},
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);//??
-  const isAuthenticated = firebase.auth().currentUser;
-  console.log("isauthenticated", isAuthenticated);
-  if (requiresAuth && !isAuthenticated) {
-    next("/AdminForm");
-  } else {
-    next();
-  }
-});
-
-
-let app;
-
-firebase.auth().onAuthStateChanged(user => {
-  console.log("user", user);
-  if (!app) {
-    app = new Vue({
-      router,
-      render: h => h(App)
-    }).$mount("#app");
-  }
-});
-
-
-
-// new Vue({
-//   render: h => h(App),
-//   router
-// }).$mount('#app')
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount("#app");
+  

@@ -61,8 +61,7 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase";
 
 export default {
   data() {
@@ -77,13 +76,10 @@ export default {
   methods: {
     async submit() {
       try {
-        const signIn = await firebase
+        await firebase
           .auth()
           .createUserWithEmailAndPassword(this.form.email, this.form.password);
-        console.log(signIn);
-        this.$router.replace({ path: "/DataForm" }).then((data) => {
-          data.user;
-        });
+        this.$router.push("/DataForm");
       } catch (err) {
         this.error = err.message;
       }

@@ -32,57 +32,18 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
 import axios from "axios";
 export default {
   data() {
     return {
-      forms: [
-        {
-          email: null,
-          name: null,
-          phone: null,
-        },
-      ],
-      question1: [],
-      question2: null,
-      question3: null,
-      question4: null,
-      question5: null,
+      forms: [],
     };
   },
-  mounted() {
-    this.getSecrets();
-    axios
-      .get(
-        "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json"
-      )
-      .then((response) => (this.forms = response.data))
-      .catch((error) => console.log(error));
-  },
-  methods: {
-    async getSecrets() {
-      const token = await firebase.auth().currentUser.getIdToken();
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      this.secrets = await this.$axios.get(
-        "http://localhost:8080/DataForm",
-        config
-      );
-      this.secrets = this.secrets.data;
-    },
-    // del() {
-    //   axios
-    //     .delete(
-    //       "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json",
-    //     )
-    //     .then((response) => console.log(response))
-    //     .catch((error) => console.log(error));
-    // },
+  async mounted() {
+    const { data } = await axios.get(
+      "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+    );
+    this.forms = data;
   },
 };
 </script>

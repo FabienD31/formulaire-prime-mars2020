@@ -1,18 +1,14 @@
 <template>
   <div>
     <b-navbar relative="top" type="dark" variant="dark">
-      <b-navbar-brand href="/">Formulaire</b-navbar-brand>
+      <b-navbar-brand to="/">Formulaire</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item v-if="loggedIn" href="/DataForm">Données</b-nav-item>
-          <b-nav-item href="/adminForm">Admin</b-nav-item>
+          <b-nav-item v-if="loggedIn" to="/DataForm">Données</b-nav-item>
+          <b-nav-item v-if="!loggedIn" to="/adminForm">Admin</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-if="loggedIn" class="ml-auto h1 off">
-          <b-icon-power
-            href="/"
-            @click="signOut"
-            variant="white"
-          ></b-icon-power>
+          <b-icon-power to="/" @click="signOut" variant="white"></b-icon-power>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -20,8 +16,7 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -44,13 +39,8 @@ export default {
     },
     async signOut() {
       try {
-        const off = await firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            this.$router.replace({ path: "/" });
-          });
-        console.log(off);
+        await firebase.auth().signOut();
+        this.$router.push("/");
       } catch (er) {
         this.error = er.message;
       }

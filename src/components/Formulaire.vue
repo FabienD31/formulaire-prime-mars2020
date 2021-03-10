@@ -309,13 +309,10 @@ export default {
       e.preventDefault();
       if (this.verifyForm() === true) {
         alert("Le formulaire a été envoyé avec succès !");
-        axios
-          .post(
-            "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json",
-            this.totalForm
-          )
-          .then((response) => console.log(response))
-          .catch((error) => console.log(error));
+        axios.post(
+          "https://formulaire-prime-48b56-default-rtdb.europe-west1.firebasedatabase.app/users.json",
+          this.totalForm
+        );
       }
     },
   },
