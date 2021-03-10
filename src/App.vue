@@ -27,13 +27,9 @@ export default {
     logg() {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          // User is signed in.
-          console.log("signed in");
           this.log = true;
         } else {
-          // No user is signed in.
           this.log = false;
-          console.log("signed out", this.loggedIn);
         }
       });
     },

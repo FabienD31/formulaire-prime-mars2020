@@ -45,7 +45,7 @@ const router = new VueRouter({
   mode:'history',
   routes: [
     { path: '/', component: Formulaire },
-    { path: '/admin', component: Admin },
+    { path: '/admin',component: Admin },
     { path: '/adminForm', component: AdminForm },
     { path: '/DataForm', component: DataForm, meta: { requiresAuth: true }},
   ]

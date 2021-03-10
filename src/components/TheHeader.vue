@@ -4,12 +4,15 @@
       <b-navbar-brand href="/">Formulaire</b-navbar-brand>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/DataForm">Data</b-nav-item>
-          <b-nav-item href="/admin">Admin</b-nav-item>
-          <b-nav-item href="/adminForm">Connectez-vous</b-nav-item>
+          <b-nav-item v-if="loggedIn" href="/DataForm">Données</b-nav-item>
+          <b-nav-item href="/adminForm">Admin</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav v-if="loggedIn" class="ml-auto h1 off">
-          <b-icon-power href="/" @click="signOut" variant="info"></b-icon-power>
+          <b-icon-power
+            href="/"
+            @click="signOut"
+            variant="white"
+          ></b-icon-power>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
