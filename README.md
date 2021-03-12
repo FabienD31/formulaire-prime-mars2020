@@ -5,7 +5,7 @@ Realiser un formulaire en SPA avec VueJS et firebase pour récuperer les infos d
 Les outils:
 - firebase :
   - Authentification (une partie admin qui récupère les infos du formulaire)
-  - Firestore (réaliser une BDD pour stocker les infos du formulaire)
+  - Realtime Database (réaliser une BDD pour stocker les infos du formulaire)
   - Hosting (mettre en ligne la SPA)
 - Bootstrap : pour réaliser la SPA rapidement en responsive
 - Axios : Permet d'effectuer les requètes avec le back (envoi des données du formulaire)
