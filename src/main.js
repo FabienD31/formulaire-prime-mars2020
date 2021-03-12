@@ -11,9 +11,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-import Admin from "./components/Admin"
+import CreateUser from "./components/CreateUser"
 import Formulaire from "./components/Formulaire"
-import AdminForm from "./components/AdminForm"
+import Connexion from "./components/Connexion"
 import DataForm from "./components/DataForm"
 
 
@@ -44,14 +44,14 @@ const router = new VueRouter({
   mode:'history',
   routes: [
     { path: '/', component: Formulaire },
-    { path: '/admin999',component: Admin },
-    { path: '/adminForm', component: AdminForm },
+    { path: '/admin999',component: CreateUser },
+    { path: '/Connexion', component: Connexion },
     { path: '/DataForm', component: DataForm, beforeEnter: (to, from, next) => {
       const isAuthenticated = firebase.auth().currentUser;
       if (isAuthenticated) {
         next()
       } else {
-        next("/AdminForm")
+        next("/Connexion")
       }
     }},
   ]

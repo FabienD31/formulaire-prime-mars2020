@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="mt-5 text-center mb-5">
-      Formulaire digitalisation
+      Etes-vous éligible au chèque numérique de 500 € ?
     </h3>
     <b-form @submit="submitForm" class="">
       <div class="question py-3 px-3">
@@ -321,7 +321,7 @@ export default {
 
 <style scoped>
 .question {
-  background-color: rgba(240, 127, 14, 0.24);
+  background-color: #fcd21d;
   border-radius: 25px;
 }
 </style>
