@@ -2,6 +2,8 @@
 
 Realiser un formulaire en SPA avec VueJS et firebase pour récuperer les infos du formulaire.
 
+Lien vers le projet: https://formulaire-prime-48b56.web.app/
+
 Les outils:
 - firebase :
   - Authentification (une partie admin qui récupère les infos du formulaire)
